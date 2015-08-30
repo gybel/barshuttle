@@ -34,6 +34,7 @@
     <icon src="AppIcon72x72.pn" gap:platform="android" gap:qualifier="mdpi" />
     <icon src="AppIcon57x57@2x.png" gap:platform="android" gap:qualifier="hdpi" />
     <icon src="AppIcon57x57@2x.png" gap:platform="android" gap:qualifier="xhdpi" />
+    <icon src="AppIcon57x57@2x.png" gap:platform="android" gap:qualifier="xxhdpi" />
 
     <gap:splash src="splash.png" />
 
