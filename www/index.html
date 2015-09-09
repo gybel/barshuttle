@@ -1,11 +1,2175 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-   <title>title</title>
-   <script>
-     window.location='main.html';
-	 //window.location='http://showbus.dk/shuttle/app/main.html'
-   </script>
-  <body>
-  </body>
+<head>
+<meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width"/>
+<title>Barbussen Shuttle</title>
+    <link rel="stylesheet" href="jquery-mobile/jquery.mobile-1.3.1.min.css" />
+    
+<style type="text/css">
+		.i-txt{display:none !important;}
+        body {
+            /* Setting body margins to 0 to have proper positioning of #container div */
+            margin: 0;
+        }
+ 
+            /* #container div with absolute position and 100% width and height so it takes up whole window */
+        #container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+		
+		/* Let's get this party started */ ::-webkit-scrollbar { width: 8px; } /* Track */ ::-webkit-scrollbar-track { -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); -webkit-border-radius: 10px; border-radius: 10px; } /* Handle */ ::-webkit-scrollbar-thumb { -webkit-border-radius: 10px; border-radius: 10px; background: rgba(255,0,0,0.3); -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); } ::-webkit-scrollbar-thumb:window-inactive { background: rgba(255,0,0,0.3); }
+ 
+    </style>
+</head> 
+<body style="overflow-y: hidden;" class="ui-mobile-viewport" onLoad="loadService()"> 
+<div id="overlay" style="display: none;">
+</div> 
+
+
+<div data-role="page" id="start" data-theme="a">
+<!--<script>
+    if ((navigator.userAgent.match(/Android/i)) == "Android") {
+	document.write("<br>");
+}
+</script>-->
+
+    <!--<div data-role="header" style="border:none !important" data-id="headid" id="headerid">
+<img src="images/logo.png" style="width:100%; height:10%"/>
+</div>-->
+	<div data-role="content">
+    <script>
+if (window.innerHeight < 500) {
+	document.write('<div style="margin-top: 14%">');
+} else {
+	if (window.innerHeight < 950) {
+		document.write('<div style="margin-top: 20%">');
+	} else {
+		document.write('<div style="margin-top: 22%">');
+	}
+}
+
+document.write('</div>'); 
+</script>
+     <center>
+	    <table width="100%">
+  <tr>
+    <td><div class="small">
+    BarShuttle – en partybus der kører fra bar til bar. BarShuttle er altid fyldt med god musik og glade mennesker.<br> BarShuttle standser ved de mest populære barer i København.<br>
+JUMP ON – JUMP OFF Billetpris kun 50,-
+    </div>
+    <!--<textarea name="front" cols="40" rows="4" disabled readonly class="small" id="front" style="overflow:scroll-y; height:110px !important; opacity:10 !important"  >BarShuttle – en partybus der kører fra bar til bar. BarShuttle er altid fyldt med god musik og glade mennesker. BarShuttle standser ved de mest populære barer i København.
+JUMP ON – JUMP OFF Billetpris kun 50,- 
+</textarea>--></td>
+  </tr>
+  <tr>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Servicemeddelelser</td>
+  </tr>
+  <tr>
+    <td><textarea class="small" cols="40" rows="4" disabled name="service" id="service" readonly style="overflow:scroll-y; height:90px !important; opacity:10 !important"></textarea></td>
+  </tr>
+  <tr>
+  <td><br>
+  </td>
+  </tr>
+  <tr>
+  <td><button onClick="var ref = window.open('http://www.showbus.dk/shutte/barshuttle-international', '_system');">
+  <img src="images/uk3.jpg" width="30" height="20"/><img src="images/jp2.jpg" width="30" height="20"/><img src="images/it2.jpg" width="30" height="20"/><img src="images/fr2.jpg" width="30" height="20"/><img src="images/ru2.jpg" width="30" height="20"/><img src="images/sp2.jpg" width="30" height="20"/><img src="images/ge2.jpg" width="30" height="20"/><img src="images/cn.jpg" width="30" height="20"/>
+  </button>
+  
+  </td>
+  </tr>
+</table>
+
+    </center>
+    </div>
+    <div data-role="footer" data-id="footerid" style="opacity:0.98 !important;">
+			<div data-role="navbar">
+				<ul >
+      				<li ><a href="#info"><div class="tab1"></div>
+		              <span class="nice">Om bussen</span></a></li>
+					<li ><a href="#stops"><div class="tab2"></div><span class="nice">Stops</span></a></li>
+					<li ><a href="#map"><div class="tab3"></div><span class="nice">Find bussen</span></a></li>
+					<li ><a href="#reminder"><div class="tab4"></div><span class="nice">Påmindelse</span></a></li>
+					<li ><a href="#ticket"><div class="tab5"></div><span class="nice">Info</span></a></li>
+				</ul>	
+			</div>
+		</div>
+</div>
+	<div data-role="page" id="info" data-theme="a">
+<!--<script>
+    if ((navigator.userAgent.match(/Android/i)) == "Android") {
+	document.write("<br>");
+}
+</script>-->
+
+    <!--<div data-role="header" style="border:none !important" data-id="headid" id="headerid">
+<img src="images/logo.png" style="width:100%; height:10%"/>
+</div>-->
+	<div data-role="content">
+
+    
+    <script>
+if (window.innerHeight < 500) {
+	document.write('<div style="margin-top: 14%">');
+} else {
+	if (window.innerHeight < 950) {
+		document.write('<div style="margin-top: 20%">');
+	} else {
+		document.write('<div style="margin-top: 22%">');
+	}
+}
+
+document.write('</div>'); 
+</script>
+     <center>
+	    <table width="100%">
+  <tr>
+    <td>
+    <div class="small" id="infotext" name="infotext" >BarShuttle – en partybus der kører fra bar til bar. BarShuttle er altid fyldt med god musik og glade mennesker. BarShuttle standser ved de mest populære barer i København. Bussen kører dig og dine venner sikkert rundt i nattelivet fredag & lørdag fra Kl. 21-03. Torsdag kører vi PubCrawls, se mere på <a target="_blank" href="#"onclick="var ref = window.open('http://barshuttle.dk', '_system');">barshuttle.dk</a>
+Hop på BarShuttle når du vil og kør videre til næste fest. Spar taxaen og mød andre festglade mennesker på turen.<br>
+<center>Billetter købes kontant ombord eller send BUS til 1944 - Billetpris kun 50,-<br><br>
+<b>Der sælges ikke alkohol ombord.</b><br>
+Følg BarShuttle på <a target="_blank" href="#"onclick="var ref = window.open('https://www.facebook.com/pages/BarShuttle/407423639389390?ref=hl', '_system');">Facebook</a></center></b></div>
+    <!--<textarea name="infotext" cols="40" rows="4" disabled readonly class="small" id="infotext" style="overflow:scroll-y; height:230px !important; opacity:10 !important"  >
+BarShuttle – en partybus der kører fra bar til bar. BarShuttle er altid fyldt med god musik og glade mennesker. BarShuttle standser ved de mest populære barer i København. Bussen kører dig og dine venner sikkert rundt i nattelivet fredag & lørdag fra Kl. 21-03. Torsdag kører vi PubCrawls, se mere på barshuttle.dk
+Hop på BarShuttle når du vil og kør videre til næste fest. Spar taxaen og mød andre festglade mennesker på turen.<br>
+Billetter købes kontant ombord eller send BUS til 1944 - Billetpris kun 50,-<br>
+<center>Der sælges ikke alkohol ombord.</center><br>
+<center>Følg BarShuttle på Facebook</center></textarea>--></td>
+  </tr>
+  <tr>
+    <td></td>
+  </tr>
+  <tr>
+    <!--<td align="center"><br><br><a style ="color:#FC0; font-style:italic; opacity:.8; font:Verdana, Geneva, sans-serif" href="#"onclick="var ref = window.open('http://showbus.dk/barbussen/barbussen-sjaelland', '_system');">Lej din egen PARTYBUS her!</a></td>-->
+    <td>
+    <button onClick="var ref = window.open('http://showbus.dk/barbussen/barbussen-sjaelland', '_system');"><div style="color:#FC0;"><center><b>Lej din egen PARTYBUS her!</b></center></div></button>
+    </td>
+  </tr>
+</table>
+
+    </center>
+    </div>
+    <div data-role="footer" data-id="footerid" style="opacity:0.85 !important;">
+			<div data-role="navbar">
+				<ul >
+      				<li ><a href="#info"><div class="tab1selected"></div>
+		              <span class="niceselected">Om bussen</span></a></li>
+					<li ><a href="#stops"><div class="tab2"></div><span class="nice">Stops</span></a></li>
+					<li ><a href="#map"><div class="tab3"></div><span class="nice">Find bussen</span></a></li>
+					<li ><a href="#reminder"><div class="tab4"></div><span class="nice">Påmindelse</span></a></li>
+					<li ><a href="#ticket"><div class="tab5"></div><span class="nice">Info</span></a></li>
+				</ul>	
+			</div>
+		</div>
+</div>
+
+
+<div data-role="page" id="stops" data-theme="a">
+<!--<div data-role="header" style="border:none !important" data-id="headid" id="headerid">
+<img src="images/logo.png" style="width:100%; height:10%"/>
+</div>-->
+<!--<script>
+    if ((navigator.userAgent.match(/Android/i)) == "Android") {
+	document.write("<br>");
+}
+</script>-->
+
+<div data-role="content" >
+<script>
+if (window.innerHeight < 500) {
+	document.write('<div style="margin-top: 14%">');
+} else {
+	if (window.innerHeight < 950) {
+		document.write('<div style="margin-top: 20%">');
+	} else {
+		document.write('<div style="margin-top: 22%">');
+	}
+}
+
+document.write('</div>'); 
+</script>
+<center>
+	    <table width="100%">
+  <tr>
+    <td>
+    <div class="small" id="stops-info">
+    Afgangstider fra Kødbyen:Kl.21 & Kl.23 & Kl.01.<br>
+Vi anbefaler at følge bussen på kortet under "Find bussen".<br>
+<b>Bussen standser KUN ved de angivne stoppesteder.</b>
+    </div>
+    <!--<textarea data-theme="a" class="big" cols="4" rows="3" disabled name="textarea" id="textarea" readonly style="overflow:scroll-y; height:72px !important; opacity:10 !important">Nedenstående tider er estimeret, vi anbefaler at følge bussen på kortet.
+Go' tur</textarea>--></td>
+  </tr>
+<tr>
+<td><div class="small" style="font-size:15px !important;" id="stops">
+Kødbyen > Istedgade > Enghavevej > Vesterbros Torv >
+Vesterport St. > Hovedbanegården > Rådhuspladsen >
+Vester Voldgade > Gl. Torv > Vandkunsten > Højbro plads >
+Kgs. Nytorv > Gothersgade > Rundetårn > Nørregade > 
+Nørrebrogade > Skt. Hans Torv > Østerbrogade > Trianglen >
+Skt. Hans Torv > Nørrebrogade > Nørreport St. > 
+Gl. Mønt > Rådhuspladsen > Kødbyen
+</div>
+</td><!--<td align="center">
+    <div style="opacity:.7 !important; font-size:9px !important;" data-role="none">
+   <ol id="demo" data-role="none">
+    <li>Kødbyen
+        <ol>
+            <li>21:00</li>
+            <li>22:30</li>
+            <li>00:00</li>
+            <li>01:30</li>
+        </ol>
+    </li>
+    <li>Enghavevej 40
+        <ol>
+            <li>21:06</li>
+            <li>22:36</li>
+            <li>00:06</li>
+            <li>01:36</li>
+        </ol>
+    </li>
+    <li>Vesterbro Torv
+        <ol>
+            <li>21:09</li>
+            <li>22:39</li>
+            <li>00:09</li>
+            <li>01:39</li>
+        </ol>
+    </li>
+    <li>Ved Vesterport 3
+        <ol>
+            <li>21:13</li>
+            <li>22:43</li>
+            <li>00:13</li>
+            <li>01:43</li>
+        </ol>
+    </li>
+    <li>Vester voldgade 2
+        <ol>
+            <li>21:15</li>
+            <li>22:45</li>
+            <li>00:15</li>
+            <li>01:45</li>
+        </ol>
+    </li>
+    <li>Vestebrogade 2
+        <ol>
+            <li>21:18</li>
+            <li>22:48</li>
+            <li>00:18</li>
+            <li>01:48</li>
+        </ol>
+    </li>
+    <li>Gl. torv/Nytorv
+        <ol>
+            <li>21:28</li>
+            <li>22:58</li>
+            <li>00:28</li>
+            <li>01:58</li>
+        </ol>
+    </li>
+    <li>Højbro plads
+        <ol>
+            <li>21:37</li>
+            <li>23:07</li>
+            <li>00:37</li>
+            <li>02:07</li>
+        </ol>
+    </li>
+    <li>Kgs. Nytorv 18
+        <ol>
+            <li>21:42</li>
+            <li>23:12</li>
+            <li>00:42</li>
+            <li>02:12</li>
+        </ol>
+    </li>
+    <li>Gothersgade 15
+        <ol>
+            <li>21:44</li>
+            <li>23:14</li>
+            <li>00:44</li>
+            <li>02:14</li>
+        </ol>
+    </li>
+    <li>Landemærket 3
+        <ol>
+            <li>21:48</li>
+            <li>23:18</li>
+            <li>00:48</li>
+            <li>02:18</li>
+        </ol>
+    </li>
+    <li>Nørregade 41
+        <ol>
+            <li>21:51</li>
+            <li>23:21</li>
+            <li>00:51</li>
+            <li>02:21</li>
+        </ol>
+    </li>
+    <li>Østerbrogade 81
+        <ol>
+            <li>22:03</li>
+            <li>23:33</li>
+            <li>01:03</li>
+            <li>02:33</li>
+        </ol>
+    </li>
+    <li>Trianglen
+        <ol>
+            <li>22:05</li>
+            <li>23:35</li>
+            <li>01:05</li>
+            <li>02:35</li>
+        </ol>
+    </li>
+    <li>Skt.Hans Torv
+        <ol>
+            <li>22:08</li>
+            <li>23:38</li>
+            <li>01:08</li>
+            <li>02:38</li>
+        </ol>
+    </li>
+    <li>Gl. mønt
+        <ol>
+            <li>22:15</li>
+            <li>23:45</li>
+            <li>01:15</li>
+            <li>02:45</li>
+        </ol>
+    </li>
+</ol>
+</div>
+</td>--></tr>
+<tr>
+    <!--<td align="center"><br><br><a style ="color:#FC0;  opacity:.8; font:Verdana, Geneva, sans-serif" href="#"onclick="var ref = window.open('http://showbus.dk/shuttle/rute', '_system');">Se detaljeret køreplan her</a></td>-->
+    
+    <td>
+    <button onClick="var ref = window.open('www.showbus.dk/shutte/rute', '_system');"><div style="color:#FC0;"><center><b>Se detaljeret køreplan her</b></center></div></button>
+    </td>
+  </tr>
+</table>
+</center>
+</div>
+
+
+
+
+
+    <div data-role="footer" data-id="footerid" style="opacity:0.85 !important;">
+			<div data-role="navbar">
+				<ul >
+      				<li ><a href="#info"><div class="tab1"></div>
+		              <span class="nice">Om bussen</span></a></li>
+					<li ><a href="#stops"><div class="tab2selected"></div><span class="niceselected">Stops</span></a></li>
+					<li ><a href="#map" onClick="google.maps.event.trigger(map, 'resize')"><div class="tab3"></div><span class="nice">Find bussen</span></a></li>
+					<li ><a href="#reminder"><div class="tab4"></div><span class="nice">Påmindelse</span></a></li>
+					<li ><a href="#ticket"><div class="tab5"></div><span class="nice">Info</span></a></li>
+				</ul>	
+			</div>
+		</div>
+</div>
+
+<div data-role="page" id="map">
+    <div data-role="content"id="map-content" > 
+        
+            <div id="map_canvas" style="height:300px;">
+    
+                <!-- map loads here... -->
+        </div>
+    </div>
+    
+
+    <div data-role="footer"  data-id="footerid" style="opacity:0.85 !important;">
+			<div data-role="navbar">
+				<ul >
+      				<li ><a href="#info"><div class="tab1"></div>
+		              <span class="nice">Om bussen</span></a></li>
+					<li ><a href="#stops"><div class="tab2"></div><span class="nice">Stops</span></a></li>
+					<li ><a href="#map"><div class="tab3selected"></div><span class="niceselected">Find bussen</span></a></li>
+					<li ><a href="#reminder"><div class="tab4"></div><span class="nice">Påmindelse</span></a></li>
+					<li ><a href="#ticket"><div class="tab5"></div><span class="nice">Info</span></a></li>
+				</ul>	
+			</div>
+		</div>
+</div>
+
+<div data-role="page" id="ticket" data-theme="a">
+<!--<div data-role="header" style="border:none !important" data-id="headid" id="headerid">
+<img src="images/logo.png" style="width:100%; height:10%"/>
+</div>-->
+<!--<script>
+if ((navigator.userAgent.match(/Android/i)) == "Android") {
+	document.write("<br>");
+}
+</script>-->
+    <div data-role="content"> 
+    <script>
+if (window.innerHeight < 500) {
+	document.write('<div style="margin-top: 14%">');
+} else {
+	if (window.innerHeight < 950) {
+		document.write('<div style="margin-top: 20%">');
+	} else {
+		document.write('<div style="margin-top: 22%">');
+	}
+}
+
+document.write('</div>'); 
+</script>
+    <center>
+    <table width="100%">
+  <tr>
+    <td >
+    <div class="small"><center><b>Det er selvfølgelig tilladt at:</b><br>
+Danse & synge<br>
+Kysse din sidemand<br>
+Medbringe drikkevarer<br>Benytte affaldsspanden<br>
+Like BarShuttle på Facebook<br>
+</center></div>
+    <!--<textarea data-theme="a" class="small" cols="4" rows="3" disabled name="price" id="price" readonly style="overflow:scroll-y; height:110px !important; opacity:10 !important;">Køb din billet når du stiger ombord. 
+Betal kontant eller send BUS til 1944 på SMS.
+Det koster 50,- pr. billet, JUMP ON JUMP OFF hele aftenen.</textarea>--></td>
+  </tr>
+<tr><td>
+<div class="small">
+<center><b>Det er IKKE tilladt at:</b><br>
+Sidde at sove<br>
+Stå på sæderne<br>
+Udøve hærværk<br>
+Banke på ruderne<br>
+Medbringe fødevarer<br>
+Unødigt udløse nødudgange<br>
+</center></div></td></tr>
+<tr><td align="center"><button onClick="var ref = window.open('http://barshuttle.dk', '_system');"><center><div style="color:#FC0 !important;">Lej BarShuttle til din private<br>fest eller book en PubCrawl.<br>Tryk her og se mere</div></center></button></td></tr>
+</table>
+</center>
+    </div>
+<div data-role="footer" data-id="footerid"style="opacity:0.85 !important;" >
+			<div data-role="navbar">
+				<ul >
+      				<li ><a href="#info"><div class="tab1"></div>
+		              <span class="nice">Om bussen</span></a></li>
+					<li ><a href="#stops"><div class="tab2"></div><span class="nice">Stops</span></a></li>
+					<li ><a href="#map"><div class="tab3"></div><span class="nice">Find bussen</span></a></li>
+					<li ><a href="#reminder"><div class="tab4"></div><span class="nice">Påmindelse</span></a></li>
+					<li ><a href="#ticket"><div class="tab5selected"></div><span class="niceselected">Info</span></a></li>
+				</ul>	
+			</div>
+		</div>
+</div>
+
+<div data-role="page" id="reminder" data-theme="a">
+
+<!--<script>
+    if ((navigator.userAgent.match(/Android/i)) == "Android") {
+	document.write("<br>");
+}
+</script>-->
+	<!--<div data-role="header" style="border:none !important" data-id="headid" id="headerid">
+<img src="images/logo.png" style="width:100%; height:10%"/>
+</div>-->
+    <div data-role="content">
+    <script>
+if (window.innerHeight < 500) {
+	document.write('<div style="margin-top: 14%">');
+} else {
+	if (window.innerHeight < 950) {
+		document.write('<div style="margin-top: 20%">');
+	} else {
+		document.write('<div style="margin-top: 22%">');
+	}
+}
+
+document.write('</div>'); 
+</script>
+    <form id="form">
+    <table width="100%">
+    <tr>
+    <td colspan="2">
+    <div class="small">Få tilsendt en SMS 5 min. før bussen er ved det valgte stoppested.</div>
+    </td>
+    </tr>
+    <tr>
+    <td><label data-theme="a" for="tel">Telefon nr.:</label></td>
+    <td><input type="tel" name="tel" id="tel" value=""  class="required number"/></td>
+    </tr>
+    <tr>
+    <td><label data-theme="a" for="select-stop" class="select">Stop:</label>
+    </td>
+    <td>
+    <select  name="select-stop" id="select-stop" >
+                    <option value="1">Kødbyen</option>
+                    <option value="2">Istedgade /Haderslevsgade</option>
+                    <option value="3">Enghavevej /Tove Ditlevsens Pl.</option>
+                    <option value="4">Vesterbros Torv</option>
+                    <option value="5">Vesterport St.</option>
+                    <option value="6">Hovedbanegården/Tivoli</option>
+                    <option value="7">Rådhuspladsen/Vesterbrogade</option>
+                    <option value="8">Vester Voldgade/Jamers Pl.</option>
+                    <option value="9">Gl. Torv/Strøget</option>
+                    <option value="10">Vandkunsten</option>
+                    <option value="11">Højbro plads/Storkespringvandet</option>
+                    <option value="12">Kgs. Nytorv</option> 
+                    <option value="13">Gothersgade/Borgergade</option>
+                    <option value="14">Rundetårn</option>
+                    <option value="15">Nørregade</option>
+                    <option value="16">Nørrebrogade/Ravnsborggade</option>
+                    <option value="17">Skt. Hans Torv</option>
+                    <option value="18">Østerbrogade</option>
+                    <option value="19">Trianglen</option>
+                    <option value="20">Skt. Hans Torv</option>
+                    <option value="21">Nørrebrogade/Elmegade</option>
+                    <option value="22">Nørreport St.</option>
+                    <option value="23">Gl. Mønt/Sværtegade</option>
+                    <option value="24">Rådhuspladsen/Vesterbrogade</option>
+                </select>
+    </td>
+    </tr>
+    <tr>
+    <td>
+    </td>
+    </tr>
+    <tr>
+    <td colspan="2">
+    <div id="smsrequest" data-role="button" data-icon="grid" data-iconpos="right" onClick="notify()">Send*</div>
+    </td>
+    </tr>
+    <tr>
+    <td colspan="2">
+     <div class="small">* SMS servicen er gratis. Du kan max anmode om 5 SMS'er pr. aften/nat.</div>
+    </td>
+    </tr>
+    </table>
+	</form>
+    </div>
+    
+    <div data-role="footer" data-id="footerid" style="opacity:0.85 !important;">
+			<div data-role="navbar">
+				<ul >
+      				<li ><a href="#info"><div class="tab1"></div>
+		              <span class="nice">Om bussen</span></a></li>
+					<li ><a href="#stops"><div class="tab2"></div><span class="nice">Stops</span></a></li>
+					<li ><a href="#map"><div class="tab3"></div><span class="nice">Find bussen</span></a></li>
+					<li ><a href="#reminder"><div class="tab4selected"></div><span class="niceselected">Påmindelse</span></a></li>
+					<li ><a href="#ticket"><div class="tab5"></div><span class="nice">Info</span></a></li>
+				</ul>	
+			</div>
+		</div>
+</div>
+</body>
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true">			</script>    
+    <script src="jquery-mobile/jquery-1.9.1.min.js"></script>
+    <script src="jquery-mobile/jquery.mobile-1.3.1.min.js"></script> 
+	<script src="js/main.js" type="text/javascript"></script>
+    <link href="main.css" rel="stylesheet" type="text/css"/>
+    <script src="phonegap.js" type="text/javascript"></script>
+    <script src="js/init.js" type="text/javascript"></script>
+    <script type="text/javascript" src="jquery-mobile/jquery.validate.js"></script>
+    <script src="mobi/js/mobiscroll.core.js" type="text/javascript"></script>
+    <script src="mobi/js/mobiscroll.datetime.js" type="text/javascript"></script>
+    <script src="mobi/js/mobiscroll.select.js" type="text/javascript"></script>
+    <script src="mobi/js/mobiscroll.jqmobi.js" type="text/javascript"></script>
+    <script src="mobi/js/mobiscroll.jqmwidget.js" type="text/javascript"></script>
+    <script src="mobi/js/mobiscroll.list.js" type="text/javascript"></script>
+    <script src="mobi/js/mobiscroll.android.js" type="text/javascript"></script>
+
+    <script src="mobi/js/mobiscroll.android-ics.js" type="text/javascript"></script>
+
+    <script src="mobi/js/mobiscroll.wp.js" type="text/javascript"></script>
+
+    <!--<script src="mobi/js/i18n/mobiscroll.core-de.js" type="text/javascript"></script>
+    <script src="mobi/js/i18n/mobiscroll.core-hu.js" type="text/javascript"></script>
+    <script src="mobi/js/i18n/mobiscroll.core-fr.js" type="text/javascript"></script>
+    <script src="mobi/js/i18n/mobiscroll.core-es.js" type="text/javascript"></script>
+    <script src="mobi/js/i18n/mobiscroll.core-it.js" type="text/javascript"></script>
+    <script src="mobi/js/i18n/mobiscroll.datetime-de.js" type="text/javascript"></script>
+    <script src="mobi/js/i18n/mobiscroll.datetime-hu.js" type="text/javascript"></script>
+    <script src="mobi/js/i18n/mobiscroll.datetime-fr.js" type="text/javascript"></script>
+    <script src="mobi/js/i18n/mobiscroll.datetime-es.js" type="text/javascript"></script>
+    <script src="mobi/js/i18n/mobiscroll.datetime-it.js" type="text/javascript"></script>-->
+
+    <link href="mobi/css/mobiscroll.core.css" rel="stylesheet" type="text/css" />
+    <link href="mobi/css/mobiscroll.jqm.css" rel="stylesheet" type="text/css" />
+    <link href="mobi/css/mobiscroll.android.css" rel="stylesheet" type="text/css" />
+    <link href="mobi/css/mobiscroll.android-ics.css" rel="stylesheet" type="text/css" />
+    <link href="mobi/css/mobiscroll.ios.css" rel="stylesheet" type="text/css" />
+    <link href="mobi/css/mobiscroll.sense-ui.css" rel="stylesheet" type="text/css" />
+    <link href="mobi/css/mobiscroll.wp.css" rel="stylesheet" type="text/css" />
+    <link href="mobi/css/mobiscroll.animation.css" rel="stylesheet" type="text/css" />
+<script>
+
+$( document ).bind( "mobileinit", function() {
+    // Make your jQuery Mobile framework configuration changes here!
+	navigator.splashscreen.hide();
+    $.support.cors = true;
+$.mobile.allowCrossDomainPages = true;
+
+$.mobile.defaultPageTransition = 'none';
+ $.mobile.defaultDialogTransition = 'none';
+})
+
+
+
+$(function(){
+    $('#demo').mobiscroll().treelist({
+        theme: 'android-ics',
+        display: 'inline',
+        mode: 'scroller',
+        labels: ['Stoppested','Tid'],
+        readonly: [false, true],
+        inputClass: 'i-txt'
+    });    
+});
+
+
+
+
+
+
+
+var map;
+var price;
+
+$(document).on('pageshow', '#map',function(e,data){ 
+	
+    $('#map_canvas').css('height',getRealContentHeight());
+	
+
+   // This is the minimum zoom level that we'll allow
+   var mapOptions = {
+    zoom: 13,
+    center: new google.maps.LatLng(55.679981,12.586777),
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+	streetViewControl: false,
+	mapTypeControl: false,
+	zoomControl: false
+  };
+  map = new google.maps.Map(document.getElementById('map_canvas'),
+      mapOptions);
+	
+  
+  updatebuspos(); 
+  
+  
+  
+  
+  //stoppesteder
+  var image = 'images/busstop.png';
+  var myLatLng1 = new google.maps.LatLng(55.66842,12.559489);
+  var marker1 = new google.maps.Marker({
+      position: myLatLng1,
+      map: map,
+      icon: image,
+	  title: 'Kødbyen'
+  }); 
+  var myLatLng2 = new google.maps.LatLng(55.667838,12.548572);
+  var marker2 = new google.maps.Marker({
+      position: myLatLng2,
+      map: map,
+      icon: image,
+	  title: 'Istedgade /Haderslevsgade'
+  }); 
+ 
+		
+  
+ var myLatLng3 = new google.maps.LatLng(55.669332,12.545403);
+  var marker3 = new google.maps.Marker({
+      position: myLatLng3,
+      map: map,
+      icon: image,
+	  title: 'Enghavevej /Tove Ditlevsens Pl.'
+  });   
+  
+  var myLatLng4 = new google.maps.LatLng(55.67242,12.554493);
+  var marker4 = new google.maps.Marker({
+      position: myLatLng4,
+      map: map,
+      icon: image,
+	  title: 'Vesterbros Torv'
+  });
+var myLatLng5 = new google.maps.LatLng(55.675592,12.562976);  
+var marker5 = new google.maps.Marker({
+      position: myLatLng5,
+      map: map,
+      icon: image,
+	  title: 'Vesterport St.'
+  });
+ 
+ var myLatLng6 = new google.maps.LatLng(55.672835,12.566388);
+  var marker6 = new google.maps.Marker({
+      position: myLatLng6,
+      map: map,
+      icon: image,
+	  title: 'Hovedbanegården/Tivoli'
+  }); 
+
+var myLatLng7 = new google.maps.LatLng(55.675503,12.56686);
+  var marker7 = new google.maps.Marker({
+      position: myLatLng7,
+      map: map,
+      icon: image,
+	  title: 'Rådhuspladsen/Vesterbrogade'
+  });
+
+		
+ var myLatLng9 = new google.maps.LatLng(55.678232,12.566481);
+  var marker9 = new google.maps.Marker({
+      position: myLatLng9,
+      map: map,
+      icon: image,
+	  title: 'Vester Voldgade/Jamers Pl.'
+  });
+  
+var myLatLng10 = new google.maps.LatLng(55.678123,12.572621);
+  var marker10 = new google.maps.Marker({
+      position: myLatLng10,
+      map: map,
+      icon: image,
+	  title: 'Gl. Torv/Strøget'
+  });
+  
+var myLatLng11 = new google.maps.LatLng(55.67599,12.574087);
+  var marker11 = new google.maps.Marker({
+      position: myLatLng11,
+      map: map,
+      icon: image,
+	  title: 'Vandkunsten'
+  });
+ 
+  var myLatLng12 = new google.maps.LatLng(55.678548,12.580079);
+  var marker12 = new google.maps.Marker({
+      position: myLatLng12,
+      map: map,
+      icon: image,
+	  title: 'Højbro plads/Storkespringvandet'
+  });
+  
+	
+var myLatLng13 = new google.maps.LatLng(55.679156,12.585764);
+  var marker13 = new google.maps.Marker({
+      position: myLatLng13,
+      map: map,
+      icon: image,
+	  title: 'Kgs. Nytorv'
+  });
+
+  var myLatLng14 = new google.maps.LatLng(55.682081,12.583034);
+  var marker14 = new google.maps.Marker({
+      position: myLatLng14,
+      map: map,
+      icon: image,
+	  title: 'Gothersgade/Borgergade'
+  });
+
+var myLatLng15 = new google.maps.LatLng(55.681577,12.575607);
+  var marker15 = new google.maps.Marker({
+      position: myLatLng15,
+      map: map,
+      icon: image,
+	  title: 'Rundetårn'
+  });
+ 
+  var myLatLng16 = new google.maps.LatLng(55.681668,12.57115);
+  var marker16 = new google.maps.Marker({
+      position: myLatLng16,
+      map: map,
+      icon: image,
+	  title: 'Nørregade'
+  });
+  
+  var myLatLng17 = new google.maps.LatLng(55.687565,12.561698);
+  var marker17 = new google.maps.Marker({
+      position: myLatLng17,
+      map: map,
+      icon: image,
+	  title: 'Nørrebrogade/Ravnsborggade'
+  });
+  
+  var myLatLng18 = new google.maps.LatLng(55.691216,12.561919);
+  var marker18 = new google.maps.Marker({
+      position: myLatLng18,
+      map: map,
+      icon: image,
+	  title: 'Skt. Hans Torv'
+  });
+  
+  var myLatLng19 = new google.maps.LatLng(55.703992,12.577347);
+  var marker19 = new google.maps.Marker({
+      position: myLatLng19,
+      map: map,
+      icon: image,
+	  title: 'Østerbrogade'
+  });
+  
+  var myLatLng20 = new google.maps.LatLng(55.699525,12.576977);
+  var marker20 = new google.maps.Marker({
+      position: myLatLng20,
+      map: map,
+      icon: image,
+	  title: 'Trianglen'
+  });
+  
+  var myLatLng21 = new google.maps.LatLng(55.691174,12.561536);
+  var marker21 = new google.maps.Marker({
+      position: myLatLng21,
+      map: map,
+      icon: image,
+	  title: 'Skt. Hans Torv'
+  });
+  
+  var myLatLng22 = new google.maps.LatLng(55.688523,12.558935);
+  var marker22 = new google.maps.Marker({
+      position: myLatLng22,
+      map: map,
+      icon: image,
+	  title: 'Nørrebrogade/Elmegade'
+  });
+  
+  var myLatLng23 = new google.maps.LatLng(55.68396,12.573293);
+  var marker23 = new google.maps.Marker({
+      position: myLatLng23,
+      map: map,
+      icon: image,
+	  title: 'Nørreport St.'
+  });
+  
+  var myLatLng24 = new google.maps.LatLng(55.681081,12.581412);
+  var marker24 = new google.maps.Marker({
+      position: myLatLng24,
+      map: map,
+      icon: image,
+	  title: 'Gl. Mønt/Sværtegade'
+  });
+  
+  var myLatLng25 = new google.maps.LatLng(55.675503,12.56686);
+  var marker25 = new google.maps.Marker({
+      position: myLatLng25,
+      map: map,
+      icon: image,
+	  title: 'Rådhuspladsen/Vesterbrogade'
+  });
+  
+ var myCoordinates = [
+new google.maps.LatLng(55.66803722110666, 12.559196949005127),
+new google.maps.LatLng(55.66824900280247, 12.559669017791748),
+new google.maps.LatLng(55.66916872715547, 12.558258175849915),
+new google.maps.LatLng(55.66938352808449, 12.558714151382446),
+new google.maps.LatLng(55.66957412510459, 12.558531761169434),
+new google.maps.LatLng(55.66989481005915, 12.5581294298172),
+new google.maps.LatLng(55.67046961613603, 12.557566165924072),
+new google.maps.LatLng(55.670030949103634, 12.556214332580566),
+new google.maps.LatLng(55.66971329059635, 12.55513608455658),
+new google.maps.LatLng(55.66937445201276, 12.553950548171997),
+new google.maps.LatLng(55.66905678817583, 12.55289912223816),
+new google.maps.LatLng(55.668554571515074, 12.551198601722717),
+new google.maps.LatLng(55.668206646555014, 12.550039887428284),
+new google.maps.LatLng(55.667940406235346, 12.549095749855042),
+new google.maps.LatLng(55.66764390920203, 12.548162341117859),
+new google.maps.LatLng(55.66752288935916, 12.547690272331238),
+new google.maps.LatLng(55.66741699668962, 12.54590392112732),
+new google.maps.LatLng(55.66738976709972, 12.545453310012817),
+new google.maps.LatLng(55.66755314435496, 12.544251680374146),
+new google.maps.LatLng(55.66905073741105, 12.54512071609497),
+new google.maps.LatLng(55.670805419989215, 12.546080946922302),
+new google.maps.LatLng(55.671464918267695, 12.545759081840515),
+new google.maps.LatLng(55.671561724418844, 12.54563570022583),
+new google.maps.LatLng(55.67210020426286, 12.547797560691833),
+new google.maps.LatLng(55.672429943879536, 12.54914939403534),
+new google.maps.LatLng(55.67255699876997, 12.549669742584229),
+new google.maps.LatLng(55.672605400524446, 12.549970149993896),
+new google.maps.LatLng(55.6727022038538, 12.551273703575134),
+new google.maps.LatLng(55.67268707834936, 12.551665306091309),
+new google.maps.LatLng(55.67259632520005, 12.552802562713623),
+new google.maps.LatLng(55.67239061728224, 12.554696202278137),
+new google.maps.LatLng(55.672330114747616, 12.55561888217926),
+new google.maps.LatLng(55.672590274982596, 12.55713701248169),
+new google.maps.LatLng(55.672584224764236, 12.557314038276672),
+new google.maps.LatLng(55.672968411774484, 12.559052109718323),
+new google.maps.LatLng(55.673062189133276, 12.55963683128357),
+new google.maps.LatLng(55.6732255427054, 12.560500502586365),
+new google.maps.LatLng(55.67345544657735, 12.561407089233398),
+new google.maps.LatLng(55.67361879850749, 12.56185233592987),
+new google.maps.LatLng(55.67388197518257, 12.562571167945862),
+new google.maps.LatLng(55.67387592516395, 12.562587261199951),
+new google.maps.LatLng(55.6741300251407, 12.562447786331177),
+new google.maps.LatLng(55.674462772614596, 12.562276124954224),
+new google.maps.LatLng(55.674692669216135, 12.562158107757568),
+new google.maps.LatLng(55.67494676388816, 12.562083005905151),
+new google.maps.LatLng(55.67510405976285, 12.562029361724854),
+new google.maps.LatLng(55.67529765381731, 12.562040090560913),
+new google.maps.LatLng(55.67537630112831, 12.562061548233032),
+new google.maps.LatLng(55.67549124691379, 12.562479972839355),
+new google.maps.LatLng(55.675557794319424, 12.562737464904785),
+new google.maps.LatLng(55.67564854059925, 12.563048601150513),
+new google.maps.LatLng(55.67568483905224, 12.563188076019287),
+new google.maps.LatLng(55.67552754551273, 12.563413381576538),
+new google.maps.LatLng(55.67529765381731, 12.563638687133789),
+new google.maps.LatLng(55.67505566109952, 12.563917636871338),
+new google.maps.LatLng(55.67480761701028, 12.564185857772827),
+new google.maps.LatLng(55.67464427004386, 12.564336061477661),
+new google.maps.LatLng(55.674493022244626, 12.564486265182495),
+new google.maps.LatLng(55.67442042309328, 12.56460428237915),/*,
+new google.maps.LatLng(55.67395155032951, 12.562957406044006),
+new google.maps.LatLng(55.674160275028015, 12.563558220863342),
+new google.maps.LatLng(55.674305474161464, 12.563837170600891),
+new google.maps.LatLng(55.67445067275605, 12.564260959625244),
+new google.maps.LatLng(55.67451419697171, 12.564437985420227)*/
+new google.maps.LatLng(55.6744022732844, 12.564636468887329),
+new google.maps.LatLng(55.67418749990657, 12.564888596534729),
+new google.maps.LatLng(55.67390012523284, 12.565199732780457),
+new google.maps.LatLng(55.67367627402441, 12.565505504608154),
+new google.maps.LatLng(55.673549222768784, 12.565736174583435),
+new google.maps.LatLng(55.6731196654679, 12.566218972206116),
+new google.maps.LatLng(55.67239666753055, 12.566996812820435),
+new google.maps.LatLng(55.67164340442255, 12.567812204360962),
+new google.maps.LatLng(55.672417843392275, 12.569909691810608),
+new google.maps.LatLng(55.672880684364365, 12.57112205028534),
+new google.maps.LatLng(55.67354619773386, 12.57209300994873),
+new google.maps.LatLng(55.67367324899931, 12.572227120399475),
+new google.maps.LatLng(55.67453537168735, 12.570381760597229),
+new google.maps.LatLng(55.67526740480946, 12.568933367729187),
+new google.maps.LatLng(55.6753823509149, 12.5686115026474),
+new google.maps.LatLng(55.675575943592236, 12.568316459655762),
+new google.maps.LatLng(55.67573323693715, 12.567978501319885),
+new google.maps.LatLng(55.67577256017458, 12.567812204360962),
+new google.maps.LatLng(55.675687863921794, 12.567560076713562),
+new google.maps.LatLng(55.675518470866145, 12.56713092327118),
+new google.maps.LatLng(55.67501028729829, 12.56587028503418),
+new google.maps.LatLng(55.67498306299229, 12.565703988075256),
+new google.maps.LatLng(55.674632170241445, 12.564582824707031),
+new google.maps.LatLng(55.67467451953354, 12.564432621002197),
+new google.maps.LatLng(55.67475316809724, 12.564260959625244),
+new google.maps.LatLng(55.67560014260956, 12.563327550888062),
+new google.maps.LatLng(55.67587540537782, 12.56312370300293),
+new google.maps.LatLng(55.67595707637607, 12.563080787658691),
+new google.maps.LatLng(55.67627165936856, 12.56309688091278),
+new google.maps.LatLng(55.6767677274091, 12.563198804855347),
+new google.maps.LatLng(55.67697946185235, 12.563316822052002),
+new google.maps.LatLng(55.677233541671434, 12.563402652740479),
+new google.maps.LatLng(55.67754811439913, 12.563644051551819),
+new google.maps.LatLng(55.67795040083585, 12.564062476158142),
+new google.maps.LatLng(55.678240770429866, 12.564448714256287),
+new google.maps.LatLng(55.678367806449465, 12.564829587936401),
+new google.maps.LatLng(55.6786763207794, 12.565671801567078),
+new google.maps.LatLng(55.67867027150223, 12.565993666648865),
+new google.maps.LatLng(55.67861582796532, 12.566272616386414),
+new google.maps.LatLng(55.67838595441858, 12.566438913345337),
+new google.maps.LatLng(55.67773867164802, 12.567055821418762),
+new google.maps.LatLng(55.677430149922685, 12.567393779754639),
+new google.maps.LatLng(55.67703995719706, 12.567946314811707),
+new google.maps.LatLng(55.67684939654441, 12.568241357803345),
+new google.maps.LatLng(55.67674050432611, 12.568563222885132),
+new google.maps.LatLng(55.67700366000146, 12.569072842597961),
+new google.maps.LatLng(55.67727588814751, 12.569485902786255),
+new google.maps.LatLng(55.67746039725823, 12.569770216941833),
+new google.maps.LatLng(55.67762373246613, 12.570043802261353),
+new google.maps.LatLng(55.677684226814485, 12.570156455039978),
+new google.maps.LatLng(55.677823363460675, 12.570564150810242),
+new google.maps.LatLng(55.67800182060851, 12.571073770523071),
+new google.maps.LatLng(55.67841015169764, 12.572318315505981),
+new google.maps.LatLng(55.677977623076856, 12.572876214981079),
+new google.maps.LatLng(55.677650954934464, 12.573251724243164),
+new google.maps.LatLng(55.67737570465975, 12.57360577583313),
+new google.maps.LatLng(55.677224467420615, 12.573777437210083),
+new google.maps.LatLng(55.677073229596765, 12.573949098587036),
+new google.maps.LatLng(55.676670934139075, 12.57432997226715),
+new google.maps.LatLng(55.676241411113836, 12.574737668037415),
+new google.maps.LatLng(55.67584515681669, 12.573723793029785),
+new google.maps.LatLng(55.67509196010264, 12.571803331375122),
+new google.maps.LatLng(55.67491953953795, 12.572135925292969),
+new google.maps.LatLng(55.67444764779082, 12.5730961561203),
+new google.maps.LatLng(55.67452024689163, 12.573219537734985),
+new google.maps.LatLng(55.67453839664578, 12.573262453079224),
+new google.maps.LatLng(55.67547914737332, 12.575692534446716),
+new google.maps.LatLng(55.67576348558481, 12.576320171356201),
+new google.maps.LatLng(55.67611134335196, 12.576717138290405),
+new google.maps.LatLng(55.676226286977695, 12.57685661315918),
+new google.maps.LatLng(55.676356354357395, 12.577055096626282),
+new google.maps.LatLng(55.676540867805315, 12.57736086845398),
+new google.maps.LatLng(55.67678890090501, 12.577741742134094),
+new google.maps.LatLng(55.67687359477398, 12.577924132347107),
+new google.maps.LatLng(55.677209343664536, 12.57882535457611),
+new google.maps.LatLng(55.67726681390651, 12.579034566879272),
+new google.maps.LatLng(55.6773303335494, 12.579222321510315),
+new google.maps.LatLng(55.67737570465975, 12.579458355903625),
+new google.maps.LatLng(55.677384778875485, 12.579667568206787),
+new google.maps.LatLng(55.67739687782656, 12.579876780509949),
+new google.maps.LatLng(55.67771144924073, 12.579978704452515),
+new google.maps.LatLng(55.67773564693703, 12.58007526397705),
+new google.maps.LatLng(55.67778404228475, 12.580150365829468),
+new google.maps.LatLng(55.6778445363852, 12.580150365829468),
+new google.maps.LatLng(55.67787478340033, 12.580150365829468),
+new google.maps.LatLng(55.67794435144639, 12.580204010009766),
+new google.maps.LatLng(55.67815305484223, 12.580166459083557),
+new google.maps.LatLng(55.67835873246176, 12.58009672164917),
+new google.maps.LatLng(55.678603729391284, 12.579962611198425),
+new google.maps.LatLng(55.67874891203284, 12.57986605167389),
+new google.maps.LatLng(55.678903167999046, 12.58082628250122),
+new google.maps.LatLng(55.679060447965725, 12.581636309623718),
+new google.maps.LatLng(55.6791663091257, 12.582027912139893),
+new google.maps.LatLng(55.679293342139445, 12.582693099975586),
+new google.maps.LatLng(55.67857650758601, 12.58310079574585),
+new google.maps.LatLng(55.67825286911619, 12.58335828781128),
+new google.maps.LatLng(55.678134906765045, 12.583470940589905),
+new google.maps.LatLng(55.67785663519404, 12.583749890327454),
+new google.maps.LatLng(55.677260764411336, 12.584452629089355),
+new google.maps.LatLng(55.67716699711645, 12.584522366523743),
+new google.maps.LatLng(55.677557188574866, 12.586244344711304),
+new google.maps.LatLng(55.677581386366604, 12.586410641670227),
+new google.maps.LatLng(55.678237745757706, 12.586056590080261),
+new google.maps.LatLng(55.67880638001294, 12.585809826850891),
+new google.maps.LatLng(55.67941735015969, 12.58558452129364),
+new google.maps.LatLng(55.67955950521142, 12.585611343383789),
+new google.maps.LatLng(55.67971678253901, 12.585788369178772),
+new google.maps.LatLng(55.679789371861524, 12.585986852645874),
+new google.maps.LatLng(55.67993757464336, 12.586399912834167),
+new google.maps.LatLng(55.68016139002503, 12.586727142333984),
+new google.maps.LatLng(55.68050618418789, 12.586968541145325),
+new google.maps.LatLng(55.68061204143507, 12.58708655834198),
+new google.maps.LatLng(55.68084492637042, 12.587365508079529),
+new google.maps.LatLng(55.680987076233855, 12.58682906627655),
+new google.maps.LatLng(55.68121391005235, 12.586013674736023),
+new google.maps.LatLng(55.68134698528024, 12.585520148277283),
+new google.maps.LatLng(55.68142562042936, 12.585289478302002),
+new google.maps.LatLng(55.681858110923514, 12.583765983581543),
+new google.maps.LatLng(55.682239182500425, 12.582312226295471),
+new google.maps.LatLng(55.68267166399829, 12.580713629722595),
+new google.maps.LatLng(55.68275029648411, 12.580477595329285),
+new google.maps.LatLng(55.68316765087769, 12.579023838043213),
+new google.maps.LatLng(55.68332491369678, 12.578401565551758),
+new google.maps.LatLng(55.68276541809787, 12.57761299610138),
+new google.maps.LatLng(55.68218474393103, 12.576674222946167),
+new google.maps.LatLng(55.681799135228644, 12.576062679290771),
+new google.maps.LatLng(55.68173713504329, 12.575952708721161),
+new google.maps.LatLng(55.68154962168943, 12.575558423995972),
+new google.maps.LatLng(55.68142864485501, 12.575266063213348),
+new google.maps.LatLng(55.681115615559186, 12.574375569820404),
+new google.maps.LatLng(55.68078594914776, 12.572876214981079),
+new google.maps.LatLng(55.68067555564587, 12.572425603866577),
+new google.maps.LatLng(55.680602967967964, 12.572042047977448),
+new google.maps.LatLng(55.68048198820545, 12.571202516555786),
+new google.maps.LatLng(55.680485012704054, 12.571202516555786),
+new google.maps.LatLng(55.68104454092561, 12.571207880973816),
+new google.maps.LatLng(55.68148308447681, 12.571138143539429),
+new google.maps.LatLng(55.681960940127496, 12.571057677268982),
+new google.maps.LatLng(55.6824660090572, 12.570810914039612),
+new google.maps.LatLng(55.68247961860878, 12.570832371711731),
+new google.maps.LatLng(55.68264595718981, 12.570784091949463),
+new google.maps.LatLng(55.68290756098141, 12.570703625679016),
+new google.maps.LatLng(55.68313740795538, 12.570145726203918),
+new google.maps.LatLng(55.683309792299355, 12.569721937179565),
+new google.maps.LatLng(55.683569879520654, 12.569003105163574),
+new google.maps.LatLng(55.68374679832808, 12.568528354167938),
+new google.maps.LatLng(55.68418379947366, 12.567428648471832),
+new google.maps.LatLng(55.68443480830436, 12.567648589611053),
+new google.maps.LatLng(55.68462381991471, 12.567884624004364),
+new google.maps.LatLng(55.684973110966645, 12.568319141864777),
+new google.maps.LatLng(55.68516665618028, 12.567780017852783),
+new google.maps.LatLng(55.68534659188684, 12.567278444766998),
+new google.maps.LatLng(55.68554013525204, 12.566784918308258),
+new google.maps.LatLng(55.68566714756488, 12.566455006599426),
+new google.maps.LatLng(55.685966532098654, 12.565690577030182),
+new google.maps.LatLng(55.68614192803347, 12.565387487411499),
+new google.maps.LatLng(55.686202409207915, 12.565253376960754),
+new google.maps.LatLng(55.686421652681055, 12.564580142498016),
+new google.maps.LatLng(55.686451893063655, 12.564451396465302),
+new google.maps.LatLng(55.68669230327326, 12.563815712928772),
+new google.maps.LatLng(55.68701435991711, 12.56300300359726),
+new google.maps.LatLng(55.68722603889563, 12.562450468540192),
+new google.maps.LatLng(55.687502731832595, 12.561699450016022),
+new google.maps.LatLng(55.687755231328765, 12.561028897762299),
+new google.maps.LatLng(55.688010753111115, 12.560320794582367),
+new google.maps.LatLng(55.688276856860995, 12.55961000919342),
+new google.maps.LatLng(55.688533887172746, 12.55976289510727),
+new google.maps.LatLng(55.68883022590584, 12.559931874275208),
+new google.maps.LatLng(55.689069109576145, 12.560071349143982),
+new google.maps.LatLng(55.68944557518282, 12.560285925865173),
+new google.maps.LatLng(55.68995659498586, 12.560570240020752),
+new google.maps.LatLng(55.6904887741901, 12.560814321041107),
+new google.maps.LatLng(55.69068380395975, 12.560940384864807),
+new google.maps.LatLng(55.69069589879714, 12.561055719852448),
+new google.maps.LatLng(55.69079870476397, 12.561289072036743),
+new google.maps.LatLng(55.69126888743165, 12.562158107757568),
+new google.maps.LatLng(55.69163777276884, 12.56286084651947),
+new google.maps.LatLng(55.692166905495306, 12.563842535018921),
+new google.maps.LatLng(55.692732313693995, 12.564896643161774),
+new google.maps.LatLng(55.69308304408216, 12.565537691116333),
+new google.maps.LatLng(55.69326294336208, 12.565653026103973),
+new google.maps.LatLng(55.69360459853909, 12.566291391849518),
+new google.maps.LatLng(55.69369530295178, 12.566433548927307),
+new google.maps.LatLng(55.69400520810721, 12.566951215267181),
+new google.maps.LatLng(55.694135216367776, 12.567200660705566),
+new google.maps.LatLng(55.69446477025397, 12.567833662033081),
+new google.maps.LatLng(55.69472175988867, 12.568303048610687),
+new google.maps.LatLng(55.69485025407249, 12.568514943122864),
+new google.maps.LatLng(55.695060378945385, 12.568952143192291),
+new google.maps.LatLng(55.6953294580686, 12.569434940814972),
+new google.maps.LatLng(55.695601558669296, 12.569957971572876),
+new google.maps.LatLng(55.69566958352351, 12.570121586322784),
+new google.maps.LatLng(55.69592656523787, 12.570609748363495),
+new google.maps.LatLng(55.69624098762562, 12.571189105510712),
+new google.maps.LatLng(55.696420872373565, 12.571532428264618),
+new google.maps.LatLng(55.69655389585646, 12.571819424629211),
+new google.maps.LatLng(55.69682447631677, 12.572318315505981),
+new google.maps.LatLng(55.69701342804154, 12.572675049304962),
+new google.maps.LatLng(55.69721749487839, 12.573069334030151),
+new google.maps.LatLng(55.697503186660185, 12.573613822460175),
+new google.maps.LatLng(55.69773899417687, 12.574053704738617),
+new google.maps.LatLng(55.697929453055714, 12.574402391910553),
+new google.maps.LatLng(55.69813653824387, 12.574793994426727),
+new google.maps.LatLng(55.69834362233492, 12.575172185897827),
+new google.maps.LatLng(55.698499312571364, 12.57546991109848),
+new google.maps.LatLng(55.69859000562715, 12.575657665729523),
+new google.maps.LatLng(55.698727556360154, 12.575944662094116),
+new google.maps.LatLng(55.698856037376814, 12.576207518577576),
+new google.maps.LatLng(55.69913567107081, 12.576636672019958),
+new google.maps.LatLng(55.69920217824947, 12.576773464679718),
+new google.maps.LatLng(55.699431929450554, 12.577181160449982),
+new google.maps.LatLng(55.69961633404285, 12.577521800994873),
+new google.maps.LatLng(55.699684351910534, 12.57747620344162),
+new google.maps.LatLng(55.699794691755216, 12.577411830425262),
+new google.maps.LatLng(55.700090945139785, 12.577417194843292),
+new google.maps.LatLng(55.70054287837521, 12.577444016933441),
+new google.maps.LatLng(55.701005386576725, 12.57746547460556),
+new google.maps.LatLng(55.701132348654966, 12.57748156785965),
+new google.maps.LatLng(55.7014285919003, 12.577433288097382),
+new google.maps.LatLng(55.701664375735625, 12.577419877052307),
+new google.maps.LatLng(55.70186237260109, 12.577422559261322),
+new google.maps.LatLng(55.70201804882142, 12.577449381351471),
+new google.maps.LatLng(55.7021087337125, 12.577449381351471),
+new google.maps.LatLng(55.70250169914224, 12.577449381351471),
+new google.maps.LatLng(55.70280548893946, 12.577435970306396),
+new google.maps.LatLng(55.703068469245004, 12.577427923679352),
+new google.maps.LatLng(55.703212049699474, 12.577430605888367),
+new google.maps.LatLng(55.70333447051243, 12.577427923679352),
+new google.maps.LatLng(55.70349467494759, 12.577435970306396),
+new google.maps.LatLng(55.703872512995545, 12.577441334724426),
+new google.maps.LatLng(55.704112816093506, 12.577433288097382),
+new google.maps.LatLng(55.704239768077024, 12.577468156814575),
+new google.maps.LatLng(55.704451353799726, 12.577497661113739),
+new google.maps.LatLng(55.70451029533276, 12.577503025531769),
+new google.maps.LatLng(55.704498204769116, 12.57735550403595),
+new google.maps.LatLng(55.70452691985163, 12.577130198478699),
+new google.maps.LatLng(55.70478686595424, 12.576580345630646),
+new google.maps.LatLng(55.70493044009523, 12.576312124729156),
+new google.maps.LatLng(55.7047626849944, 12.576607167720795),
+new google.maps.LatLng(55.704632712078805, 12.576888799667358),
+new google.maps.LatLng(55.704548078319974, 12.5770765542984),
+new google.maps.LatLng(55.70450273873093, 12.57734477519989),
+new google.maps.LatLng(55.704344049754965, 12.577376961708069),
+new google.maps.LatLng(55.704138508790145, 12.577425241470337),
+new google.maps.LatLng(55.7036715036088, 12.577446699142456),
+new google.maps.LatLng(55.703352606896544, 12.577433288097382),
+new google.maps.LatLng(55.70311985599458, 12.577419877052307),
+new google.maps.LatLng(55.70268306646941, 12.577435970306396),
+new google.maps.LatLng(55.702397412547974, 12.577444016933441),
+new google.maps.LatLng(55.70226138613723, 12.577430605888367),
+new google.maps.LatLng(55.70209815381938, 12.577444016933441),
+new google.maps.LatLng(55.70202107165451, 12.577444016933441),
+new google.maps.LatLng(55.701868418291106, 12.577417194843292),
+new google.maps.LatLng(55.70162205566479, 12.577425241470337),
+new google.maps.LatLng(55.7014285919003, 12.577435970306396),
+new google.maps.LatLng(55.7012714018865, 12.577452063560486),
+new google.maps.LatLng(55.70112479139998, 12.577468156814575),
+new google.maps.LatLng(55.70097969182023, 12.57747083902359),
+new google.maps.LatLng(55.70084970632259, 12.577462792396545),
+new google.maps.LatLng(55.70069402544835, 12.577441334724426),
+new google.maps.LatLng(55.70049299971279, 12.577433288097382),
+new google.maps.LatLng(55.700160473669975, 12.577414512634277),
+new google.maps.LatLng(55.69984759431, 12.577406466007233),
+new google.maps.LatLng(55.69973120859495, 12.577441334724426),
+new google.maps.LatLng(55.699682840403646, 12.577457427978516),
+new google.maps.LatLng(55.69959970743496, 12.577272355556488),
+new google.maps.LatLng(55.699469717347704, 12.577030956745148),
+new google.maps.LatLng(55.69925054703562, 12.576636672019958),
+new google.maps.LatLng(55.699193109095425, 12.576518654823303),
+new google.maps.LatLng(55.699008702506354, 12.576287984848022),
+new google.maps.LatLng(55.69882429504726, 12.576017081737518),
+new google.maps.LatLng(55.69864744445363, 12.575692534446716),
+new google.maps.LatLng(55.69858849407796, 12.575587928295135),
+new google.maps.LatLng(55.69857035548293, 12.5754913687706),
+new google.maps.LatLng(55.69837989972699, 12.575129270553589),
+new google.maps.LatLng(55.69817735052381, 12.57472962141037),
+new google.maps.LatLng(55.697914337305576, 12.574190497398376),
+new google.maps.LatLng(55.697705739356834, 12.573761343955994),
+new google.maps.LatLng(55.69722958769453, 12.572881579399109),
+new google.maps.LatLng(55.696609826049304, 12.57172018289566),
+new google.maps.LatLng(55.69628331352315, 12.57110595703125),
+new google.maps.LatLng(55.696061102049896, 12.570708990097046),
+new google.maps.LatLng(55.69583888931342, 12.570309340953827),
+new google.maps.LatLng(55.69563028028884, 12.56997138261795),
+new google.maps.LatLng(55.69558946534946, 12.569923102855682),
+new google.maps.LatLng(55.695064914002124, 12.568952143192291),
+new google.maps.LatLng(55.694807926623305, 12.56846934556961),
+new google.maps.LatLng(55.69425464217961, 12.567423284053802),
+new google.maps.LatLng(55.69406870056755, 12.567079961299896),
+new google.maps.LatLng(55.693699838166886, 12.566428184509277),
+new google.maps.LatLng(55.69328259617446, 12.565682530403137),
+new google.maps.LatLng(55.69279429644838, 12.564767897129059),
+new google.maps.LatLng(55.692204700416006, 12.563673555850983),
+new google.maps.LatLng(55.69181919051038, 12.562962770462036),
+new google.maps.LatLng(55.691701269074144, 12.562737464904785),
+new google.maps.LatLng(55.69147449608172, 12.562343180179596),
+new google.maps.LatLng(55.69107990793937, 12.561576068401337),
+new google.maps.LatLng(55.690878832756546, 12.561192512512207),
+new google.maps.LatLng(55.69076242033596, 12.561023533344269),
+new google.maps.LatLng(55.690691363233576, 12.560956478118896),
+new google.maps.LatLng(55.69048121487712, 12.560790181159973),
+new google.maps.LatLng(55.69050540467351, 12.560669481754303),
+new google.maps.LatLng(55.69065507870592, 12.56025105714798),
+new google.maps.LatLng(55.69100280404413, 12.55947858095169),
+new google.maps.LatLng(55.69138983382736, 12.558614909648895),
+new google.maps.LatLng(55.691879662903794, 12.557552754878998),
+new google.maps.LatLng(55.69198548936725, 12.557276487350464),
+new google.maps.LatLng(55.692100386346105, 12.556935846805573),
+new google.maps.LatLng(55.69139890479193, 12.555946111679077),
+new google.maps.LatLng(55.69095896058491, 12.555326521396637),
+new google.maps.LatLng(55.690847083948945, 12.555157542228699),
+new google.maps.LatLng(55.69051447584329, 12.554556727409363),
+new google.maps.LatLng(55.6904237640507, 12.554709613323212),
+new google.maps.LatLng(55.69023175672881, 12.555034160614014),
+new google.maps.LatLng(55.68997776134253, 12.555415034294128),
+new google.maps.LatLng(55.68983110849314, 12.555648386478424),
+new google.maps.LatLng(55.689738883223626, 12.555779814720154),
+new google.maps.LatLng(55.68961188413584, 12.556050717830658),
+new google.maps.LatLng(55.68956501532066, 12.556168735027313),
+new google.maps.LatLng(55.689427432345134, 12.55651205778122),
+new google.maps.LatLng(55.68933067040204, 12.556756138801575),
+new google.maps.LatLng(55.68905701423551, 12.55747765302658),
+new google.maps.LatLng(55.688716831247746, 12.558378875255585),
+new google.maps.LatLng(55.68827836880893, 12.559596598148346),
+new google.maps.LatLng(55.6877461595188, 12.561031579971313),
+new google.maps.LatLng(55.687230574861225, 12.562455832958221),
+new google.maps.LatLng(55.686470037281985, 12.564397752285004),
+new google.maps.LatLng(55.686417116621655, 12.56449431180954),
+new google.maps.LatLng(55.686132855849245, 12.565167546272278),
+new google.maps.LatLng(55.686078422699644, 12.565323114395142),
+new google.maps.LatLng(55.685993748760794, 12.565594017505646),
+new google.maps.LatLng(55.6859650200613, 12.565701305866241),
+new google.maps.LatLng(55.68535415219252, 12.567281126976013),
+new google.maps.LatLng(55.684973110966645, 12.568321824073792),
+new google.maps.LatLng(55.68442271153018, 12.567621767520905),
+new google.maps.LatLng(55.68423672315633, 12.567302584648132),
+new google.maps.LatLng(55.68374982257425, 12.568539083003998),
+new google.maps.LatLng(55.6833143287192, 12.569721937179565),
+new google.maps.LatLng(55.68290756098141, 12.57071703672409),
+new google.maps.LatLng(55.682478106436626, 12.57084310054779),
+new google.maps.LatLng(55.682831953128954, 12.571430504322052),
+new google.maps.LatLng(55.68307843418958, 12.571827471256256),
+new google.maps.LatLng(55.68331281657931, 12.572211027145386),
+new google.maps.LatLng(55.68340203273276, 12.57235050201416),
+new google.maps.LatLng(55.6836727042241, 12.57273405790329),
+new google.maps.LatLng(55.68400083419034, 12.573203444480896),
+new google.maps.LatLng(55.68416262998055, 12.573426067829132),
+new google.maps.LatLng(55.6845119251517, 12.573922276496887),
+new google.maps.LatLng(55.68421404158681, 12.57509171962738),
+new google.maps.LatLng(55.6838738164655, 12.576371133327484),
+new google.maps.LatLng(55.683550221825996, 12.57759153842926),
+new google.maps.LatLng(55.68333701081054, 12.578390836715698),
+new google.maps.LatLng(55.68315252941945, 12.57910430431366),
+new google.maps.LatLng(55.68289848804686, 12.580040395259857),
+new google.maps.LatLng(55.682691322134566, 12.580673396587372),
+new google.maps.LatLng(55.68261420169716, 12.580751180648804),
+new google.maps.LatLng(55.68242366819982, 12.580834329128265),
+new google.maps.LatLng(55.68222708504712, 12.580896019935608),
+new google.maps.LatLng(55.68209552500071, 12.580949664115906),
+new google.maps.LatLng(55.681841476762166, 12.580987215042114),
+new google.maps.LatLng(55.681628256431146, 12.581032812595367),
+new google.maps.LatLng(55.68140596165689, 12.58107304573059),
+new google.maps.LatLng(55.68128649659641, 12.581306397914886),
+new google.maps.LatLng(55.68113376225344, 12.581480741500854),
+new google.maps.LatLng(55.68098253954407, 12.581655085086823),
+new google.maps.LatLng(55.68081165717883, 12.581778466701508),
+new google.maps.LatLng(55.680580284291004, 12.581891119480133),
+new google.maps.LatLng(55.68049408619854, 12.581936717033386),
+new google.maps.LatLng(55.680273297235615, 12.582084238529205),
+new google.maps.LatLng(55.679886157415325, 12.582320272922516),
+new google.maps.LatLng(55.679632094825834, 12.582483887672424),
+new google.maps.LatLng(55.679300903615335, 12.582703828811646),
+new google.maps.LatLng(55.678578019909025, 12.58309006690979),
+new google.maps.LatLng(55.67834663380818, 12.583261728286743),
+new google.maps.LatLng(55.6781439808047, 12.583476305007935),
+new google.maps.LatLng(55.677850585790075, 12.583749890327454),
+new google.maps.LatLng(55.677260764411336, 12.58446604013443),
+new google.maps.LatLng(55.677079279120946, 12.583779394626617),
+new google.maps.LatLng(55.67687813194037, 12.582923769950867),
+new google.maps.LatLng(55.676775289373246, 12.582564353942871),
+new google.maps.LatLng(55.676633124202915, 12.58233904838562),
+new google.maps.LatLng(55.67647734688049, 12.582183480262756),
+new google.maps.LatLng(55.6767011820617, 12.581663131713867),
+new google.maps.LatLng(55.67674050432611, 12.581502199172974),
+new google.maps.LatLng(55.67691745402692, 12.581126689910889),
+new google.maps.LatLng(55.677026345752644, 12.580855786800385),
+new google.maps.LatLng(55.67713523717528, 12.580525875091553),
+new google.maps.LatLng(55.67728345001341, 12.580153048038483),
+new google.maps.LatLng(55.67737570465975, 12.579935789108276),
+new google.maps.LatLng(55.6774029273007, 12.579753398895264),
+new google.maps.LatLng(55.677392340720345, 12.579522728919983),
+new google.maps.LatLng(55.677372679920694, 12.579393982887268),
+new google.maps.LatLng(55.67735604385171, 12.579267919063568),
+new google.maps.LatLng(55.677310672718555, 12.579106986522675),
+new google.maps.LatLng(55.67727588814751, 12.578975558280945),
+new google.maps.LatLng(55.677209343664536, 12.578785121440887),
+new google.maps.LatLng(55.67714884858177, 12.578581273555756),
+new google.maps.LatLng(55.67708986578603, 12.578447163105011),
+new google.maps.LatLng(55.67700366000146, 12.57822722196579),
+new google.maps.LatLng(55.6769416522144, 12.578060925006866),
+new google.maps.LatLng(55.6768705699961, 12.577886581420898),
+new google.maps.LatLng(55.676772264587754, 12.57770150899887),
+new google.maps.LatLng(55.67664976057932, 12.577511072158813),
+new google.maps.LatLng(55.67653784300171, 12.577323317527771),
+new google.maps.LatLng(55.676439536757215, 12.577159702777863),
+new google.maps.LatLng(55.67635786676623, 12.577036321163177),
+new google.maps.LatLng(55.676215700078906, 12.57682979106903),
+new google.maps.LatLng(55.67578919691696, 12.576333582401276),
+new google.maps.LatLng(55.67562585404903, 12.576038539409637),
+new google.maps.LatLng(55.67553057039445, 12.575783729553223),
+new google.maps.LatLng(55.67547914737332, 12.575660347938538),
+new google.maps.LatLng(55.674943738961296, 12.574287056922913),
+new google.maps.LatLng(55.674574696128836, 12.573326826095581),
+new google.maps.LatLng(55.67451570945179, 12.573176622390747),
+new google.maps.LatLng(55.674465797578655, 12.573080062866211),
+new google.maps.LatLng(55.6742963992314, 12.572886943817139),
+new google.maps.LatLng(55.674095237741376, 12.572685778141022),
+new google.maps.LatLng(55.673925837789625, 12.57249802350998),
+new google.maps.LatLng(55.67376702466869, 12.572315633296967),
+new google.maps.LatLng(55.67371257430738, 12.572296857833862),
+new google.maps.LatLng(55.67367022397398, 12.572243213653564),
+new google.maps.LatLng(55.674045325331825, 12.57134199142456),
+new google.maps.LatLng(55.6744567226858, 12.570526599884033),
+new google.maps.LatLng(55.67490441489076, 12.56962537765503),
+new google.maps.LatLng(55.67517665764554, 12.569046020507812),
+new google.maps.LatLng(55.675467047829144, 12.568520307540894),
+new google.maps.LatLng(55.67581188337245, 12.56787657737732),
+new google.maps.LatLng(55.675315803210815, 12.566653490066528),
+new google.maps.LatLng(55.67501936206276, 12.565902471542358),
+new google.maps.LatLng(55.67491046475033, 12.565473318099976),
+new google.maps.LatLng(55.674704768999824, 12.56487250328064),
+new google.maps.LatLng(55.67462612033882, 12.564582824707031),
+new google.maps.LatLng(55.67460192071903, 12.564303874969482),
+new google.maps.LatLng(55.67445067275605, 12.563842535018921),
+new google.maps.LatLng(55.674299424208336, 12.563306093215942),
+new google.maps.LatLng(55.674039275338444, 12.562640905380249),
+new google.maps.LatLng(55.67382147495421, 12.562029361724854),
+new google.maps.LatLng(55.67356737297342, 12.561299800872803),
+new google.maps.LatLng(55.673404020828556, 12.560720443725586),
+new google.maps.LatLng(55.673240668001654, 12.559969425201416),
+new google.maps.LatLng(55.6730591640607, 12.559003829956055),
+new google.maps.LatLng(55.67284135822008, 12.558188438415527),
+new google.maps.LatLng(55.67268405324778, 12.55735158920288),
+new google.maps.LatLng(55.6725690992142, 12.556965351104736),
+new google.maps.LatLng(55.672399692654345, 12.556074857711792),
+new google.maps.LatLng(55.67233919013377, 12.55562424659729),
+new google.maps.LatLng(55.671467943463554, 12.556493282318115),
+new google.maps.LatLng(55.67046961613603, 12.557576894760132),
+new google.maps.LatLng(55.67017313826662, 12.55786657333374),
+new google.maps.LatLng(55.66985850623397, 12.558188438415527),
+new google.maps.LatLng(55.66956807441981, 12.558553218841553),
+new google.maps.LatLng(55.66939260415413, 12.558714151382446),
+new google.maps.LatLng(55.6691566256596, 12.558317184448242),
+new google.maps.LatLng(55.66889039180346, 12.557748556137085),
+new google.maps.LatLng(55.6686604611063, 12.557265758514404),
+new google.maps.LatLng(55.66849708847413, 12.557448148727417),
+new google.maps.LatLng(55.668315562527305, 12.557737827301025),
+new google.maps.LatLng(55.66812193392253, 12.558006048202515),
+new google.maps.LatLng(55.667940406235346, 12.558252811431885),
+new google.maps.LatLng(55.667740724806876, 12.558531761169434),
+new google.maps.LatLng(55.66788594776502, 12.5588858127594),
+new google.maps.LatLng(55.667958559041985, 12.559014558792114)
+]; 
+
+var polyOptions = {
+path: myCoordinates,
+strokeColor: "#FF0000",
+strokeOpacity: 1,
+strokeWeight: 3
+}
+var it = new google.maps.Polyline(polyOptions);
+it.setMap(map);
+ 
+  
+
+
+  var contentString1 = '<div id="content">'+
+      '<p>Kødbyen</p>'+
+      '</div>';
+	  
+  var contentString2 = '<div id="content">'+
+      '<p>Istedgade /Haderslevsgade</p>'+
+      '</div>';
+	  var contentString3 = '<div id="content">'+
+      '<p>Enghavevej /Tove Ditlevsens Pl.</p>'+
+      '</div>';
+	  var contentString4 = '<div id="content">'+
+      '<p>Vesterbros Torv</p>'+
+      '</div>';
+	  var contentString5 = '<div id="content">'+
+      '<p>Vesterport St.</p>'+
+      '</div>';
+	  var contentString6 = '<div id="content">'+
+      '<p>Hovedbanegården/Tivoli</p>'+
+      '</div>';
+	  var contentString7 = '<div id="content">'+
+      '<p>Rådhuspladsen/Vesterbrogade</p>'+
+      '</div>';
+	  
+	  var contentString9 = '<div id="content">'+
+      '<p>Vester Voldgade/Jamers Pl.</p>'+
+      '</div>';
+	  var contentString10 = '<div id="content">'+
+      '<p>Gl. Torv/Strøget</p>'+
+      '</div>';
+	  var contentString11 = '<div id="content">'+
+      '<p>Vandkunsten</p>'+
+      '</div>';
+	  var contentString12 = '<div id="content">'+
+      '<p>Højbro plads/Storkespringvandet</p>'+
+      '</div>';
+	  var contentString13 = '<div id="content">'+
+      '<p>Kgs. Nytorv</p>'+
+      '</div>';
+	  var contentString14 = '<div id="content">'+
+      '<p>Gothersgade/Borgergade</p>'+
+      '</div>';
+	  var contentString15 = '<div id="content">'+
+      '<p>Rundetårn</p>'+
+      '</div>';
+	  var contentString16 = '<div id="content">'+
+      '<p>Nørregade</p>'+
+      '</div>';
+	  var contentString17 = '<div id="content">'+
+      '<p>Nørrebrogade/Ravnsborggade</p>'+
+      '</div>';
+	  var contentString18 = '<div id="content">'+
+      '<p>Skt. Hans Torv</p>'+
+      '</div>';
+	  var contentString19 = '<div id="content">'+
+      '<p>Østerbrogade</p>'+
+      '</div>';
+	  var contentString20 = '<div id="content">'+
+      '<p>Trianglen</p>'+
+      '</div>';
+	  var contentString21 = '<div id="content">'+
+      '<p>Skt. Hans Torv</p>'+
+      '</div>';
+	  var contentString22 = '<div id="content">'+
+      '<p>Nørrebrogade/Elmegade</p>'+
+      '</div>';
+	  var contentString23 = '<div id="content">'+
+      '<p>Nørreport St.</p>'+
+      '</div>';
+	  var contentString24 = '<div id="content">'+
+      '<p>Gl. Mønt/Sværtegade</p>'+
+      '</div>';
+	  var contentString25 = '<div id="content">'+
+      '<p>Rådhuspladsen/Vesterbrogade</p>'+
+      '</div>';
+
+  var infowindow1 = new google.maps.InfoWindow({
+      content: contentString1,
+      maxWidth: 200,
+	  Padding: 5,
+	  borderRadius: 7, 
+      borderWidth: 6,
+      borderColor: "#3366FF",
+      backgroundColor: "#000",
+      minWidth: 100,
+      maxWidth: 300,
+      minHeight: 30,
+      maxHeight: 30,
+      arrowSize: 10,
+      arrowPosition: 50,
+      arrowStyle: 1
+
+  });
+  
+  var infowindow2 = new google.maps.InfoWindow({
+      content: contentString2,
+      maxWidth: 200,
+	  Padding: 5,
+	  borderRadius: 7, 
+      borderWidth: 6,
+      borderColor: "#3366FF",
+      backgroundColor: "#000",
+      minWidth: 100,
+      maxWidth: 300,
+      minHeight: 30,
+      maxHeight: 30,
+      arrowSize: 10,
+      arrowPosition: 50,
+      arrowStyle: 1
+
+  });
+  
+  var infowindow3 = new google.maps.InfoWindow({
+      content: contentString3,
+      maxWidth: 200,
+	  Padding: 5,
+	  borderRadius: 7, 
+      borderWidth: 6,
+      borderColor: "#3366FF",
+      backgroundColor: "#000",
+      minWidth: 100,
+      maxWidth: 300,
+      minHeight: 30,
+      maxHeight: 30,
+      arrowSize: 10,
+      arrowPosition: 50,
+      arrowStyle: 1
+
+  });
+  
+  var infowindow4 = new google.maps.InfoWindow({
+      content: contentString4,
+      maxWidth: 200,
+	  Padding: 5,
+	  borderRadius: 7, 
+      borderWidth: 6,
+      borderColor: "#3366FF",
+      backgroundColor: "#000",
+      minWidth: 100,
+      maxWidth: 300,
+      minHeight: 30,
+      maxHeight: 30,
+      arrowSize: 10,
+      arrowPosition: 50,
+      arrowStyle: 1
+
+  });
+  
+  var infowindow5 = new google.maps.InfoWindow({
+      content: contentString5,
+      maxWidth: 200,
+	  Padding: 5,
+	  borderRadius: 7, 
+      borderWidth: 6,
+      borderColor: "#3366FF",
+      backgroundColor: "#000",
+      minWidth: 100,
+      maxWidth: 300,
+      minHeight: 30,
+      maxHeight: 30,
+      arrowSize: 10,
+      arrowPosition: 50,
+      arrowStyle: 1
+
+  });
+  
+  var infowindow6 = new google.maps.InfoWindow({
+      content: contentString6,
+      maxWidth: 200,
+	  Padding: 5,
+	  borderRadius: 7, 
+      borderWidth: 6,
+      borderColor: "#3366FF",
+      backgroundColor: "#000",
+      minWidth: 100,
+      maxWidth: 300,
+      minHeight: 30,
+      maxHeight: 30,
+      arrowSize: 10,
+      arrowPosition: 50,
+      arrowStyle: 1
+
+  });
+  
+  var infowindow7 = new google.maps.InfoWindow({
+      content: contentString7,
+      maxWidth: 200,
+	  Padding: 5,
+	  borderRadius: 7, 
+      borderWidth: 6,
+      borderColor: "#3366FF",
+      backgroundColor: "#000",
+      minWidth: 100,
+      maxWidth: 300,
+      minHeight: 30,
+      maxHeight: 30,
+      arrowSize: 10,
+      arrowPosition: 50,
+      arrowStyle: 1
+
+  });
+  
+  
+  
+  var infowindow9 = new google.maps.InfoWindow({
+      content: contentString9,
+      maxWidth: 200,
+	  Padding: 5,
+	  borderRadius: 7, 
+      borderWidth: 6,
+      borderColor: "#3366FF",
+      backgroundColor: "#000",
+      minWidth: 100,
+      maxWidth: 300,
+      minHeight: 30,
+      maxHeight: 30,
+      arrowSize: 10,
+      arrowPosition: 50,
+      arrowStyle: 1
+
+  });
+  
+  var infowindow10 = new google.maps.InfoWindow({
+      content: contentString10,
+      maxWidth: 200,
+	  Padding: 5,
+	  borderRadius: 7, 
+      borderWidth: 6,
+      borderColor: "#3366FF",
+      backgroundColor: "#000",
+      minWidth: 100,
+      maxWidth: 300,
+      minHeight: 30,
+      maxHeight: 30,
+      arrowSize: 10,
+      arrowPosition: 50,
+      arrowStyle: 1
+
+  });
+  
+  var infowindow11 = new google.maps.InfoWindow({
+      content: contentString11,
+      maxWidth: 200,
+	  Padding: 5,
+	  borderRadius: 7, 
+      borderWidth: 6,
+      borderColor: "#3366FF",
+      backgroundColor: "#000",
+      minWidth: 100,
+      maxWidth: 300,
+      minHeight: 30,
+      maxHeight: 30,
+      arrowSize: 10,
+      arrowPosition: 50,
+      arrowStyle: 1
+
+  });
+  
+  var infowindow12 = new google.maps.InfoWindow({
+      content: contentString12,
+      maxWidth: 200,
+	  Padding: 5,
+	  borderRadius: 7, 
+      borderWidth: 6,
+      borderColor: "#3366FF",
+      backgroundColor: "#000",
+      minWidth: 100,
+      maxWidth: 300,
+      minHeight: 30,
+      maxHeight: 30,
+      arrowSize: 10,
+      arrowPosition: 50,
+      arrowStyle: 1
+
+  });
+  
+  var infowindow13 = new google.maps.InfoWindow({
+      content: contentString13,
+      maxWidth: 200,
+	  Padding: 5,
+	  borderRadius: 7, 
+      borderWidth: 6,
+      borderColor: "#3366FF",
+      backgroundColor: "#000",
+      minWidth: 100,
+      maxWidth: 300,
+      minHeight: 30,
+      maxHeight: 30,
+      arrowSize: 10,
+      arrowPosition: 50,
+      arrowStyle: 1
+
+  });
+  
+  var infowindow14 = new google.maps.InfoWindow({
+      content: contentString14,
+      maxWidth: 200,
+	  Padding: 5,
+	  borderRadius: 7, 
+      borderWidth: 6,
+      borderColor: "#3366FF",
+      backgroundColor: "#000",
+      minWidth: 100,
+      maxWidth: 300,
+      minHeight: 30,
+      maxHeight: 30,
+      arrowSize: 10,
+      arrowPosition: 50,
+      arrowStyle: 1
+
+  });
+  var infowindow15 = new google.maps.InfoWindow({
+      content: contentString15,
+      maxWidth: 200,
+	  Padding: 5,
+	  borderRadius: 7, 
+      borderWidth: 6,
+      borderColor: "#3366FF",
+      backgroundColor: "#000",
+      minWidth: 100,
+      maxWidth: 300,
+      minHeight: 30,
+      maxHeight: 30,
+      arrowSize: 10,
+      arrowPosition: 50,
+      arrowStyle: 1
+
+  });
+  var infowindow16 = new google.maps.InfoWindow({
+      content: contentString16,
+      maxWidth: 200,
+	  Padding: 5,
+	  borderRadius: 7, 
+      borderWidth: 6,
+      borderColor: "#3366FF",
+      backgroundColor: "#000",
+      minWidth: 100,
+      maxWidth: 300,
+      minHeight: 30,
+      maxHeight: 30,
+      arrowSize: 10,
+      arrowPosition: 50,
+      arrowStyle: 1
+
+  });
+  
+  var infowindow17 = new google.maps.InfoWindow({
+      content: contentString17,
+      maxWidth: 200,
+	  Padding: 5,
+	  borderRadius: 7, 
+      borderWidth: 6,
+      borderColor: "#3366FF",
+      backgroundColor: "#000",
+      minWidth: 100,
+      maxWidth: 300,
+      minHeight: 30,
+      maxHeight: 30,
+      arrowSize: 10,
+      arrowPosition: 50,
+      arrowStyle: 1
+
+  });
+  
+  var infowindow18 = new google.maps.InfoWindow({
+      content: contentString18,
+      maxWidth: 200,
+	  Padding: 5,
+	  borderRadius: 7, 
+      borderWidth: 6,
+      borderColor: "#3366FF",
+      backgroundColor: "#000",
+      minWidth: 100,
+      maxWidth: 300,
+      minHeight: 30,
+      maxHeight: 30,
+      arrowSize: 10,
+      arrowPosition: 50,
+      arrowStyle: 1
+
+  });
+  
+  var infowindow19 = new google.maps.InfoWindow({
+      content: contentString19,
+      maxWidth: 200,
+	  Padding: 5,
+	  borderRadius: 7, 
+      borderWidth: 6,
+      borderColor: "#3366FF",
+      backgroundColor: "#000",
+      minWidth: 100,
+      maxWidth: 300,
+      minHeight: 30,
+      maxHeight: 30,
+      arrowSize: 10,
+      arrowPosition: 50,
+      arrowStyle: 1
+
+  });
+  
+  var infowindow20 = new google.maps.InfoWindow({
+      content: contentString20,
+      maxWidth: 200,
+	  Padding: 5,
+	  borderRadius: 7, 
+      borderWidth: 6,
+      borderColor: "#3366FF",
+      backgroundColor: "#000",
+      minWidth: 100,
+      maxWidth: 300,
+      minHeight: 30,
+      maxHeight: 30,
+      arrowSize: 10,
+      arrowPosition: 50,
+      arrowStyle: 1
+
+  });
+  
+  var infowindow21 = new google.maps.InfoWindow({
+      content: contentString21,
+      maxWidth: 200,
+	  Padding: 5,
+	  borderRadius: 7, 
+      borderWidth: 6,
+      borderColor: "#3366FF",
+      backgroundColor: "#000",
+      minWidth: 100,
+      maxWidth: 300,
+      minHeight: 30,
+      maxHeight: 30,
+      arrowSize: 10,
+      arrowPosition: 50,
+      arrowStyle: 1
+
+  });
+  
+  var infowindow22 = new google.maps.InfoWindow({
+      content: contentString22,
+      maxWidth: 200,
+	  Padding: 5,
+	  borderRadius: 7, 
+      borderWidth: 6,
+      borderColor: "#3366FF",
+      backgroundColor: "#000",
+      minWidth: 100,
+      maxWidth: 300,
+      minHeight: 30,
+      maxHeight: 30,
+      arrowSize: 10,
+      arrowPosition: 50,
+      arrowStyle: 1
+
+  });
+  
+  var infowindow23 = new google.maps.InfoWindow({
+      content: contentString23,
+      maxWidth: 200,
+	  Padding: 5,
+	  borderRadius: 7, 
+      borderWidth: 6,
+      borderColor: "#3366FF",
+      backgroundColor: "#000",
+      minWidth: 100,
+      maxWidth: 300,
+      minHeight: 30,
+      maxHeight: 30,
+      arrowSize: 10,
+      arrowPosition: 50,
+      arrowStyle: 1
+
+  });
+  
+  var infowindow24 = new google.maps.InfoWindow({
+      content: contentString24,
+      maxWidth: 200,
+	  Padding: 5,
+	  borderRadius: 7, 
+      borderWidth: 6,
+      borderColor: "#3366FF",
+      backgroundColor: "#000",
+      minWidth: 100,
+      maxWidth: 300,
+      minHeight: 30,
+      maxHeight: 30,
+      arrowSize: 10,
+      arrowPosition: 50,
+      arrowStyle: 1
+
+  });
+  
+  var infowindow25 = new google.maps.InfoWindow({
+      content: contentString25,
+      maxWidth: 200,
+	  Padding: 5,
+	  borderRadius: 7, 
+      borderWidth: 6,
+      borderColor: "#3366FF",
+      backgroundColor: "#000",
+      minWidth: 100,
+      maxWidth: 300,
+      minHeight: 30,
+      maxHeight: 30,
+      arrowSize: 10,
+      arrowPosition: 50,
+      arrowStyle: 1
+
+  });
+
+  google.maps.event.addListener(marker1, 'click', function() {
+    infowindow1.open(map,marker1);
+  });
+   google.maps.event.addListener(marker2, 'click', function() {
+    infowindow2.open(map,marker2);
+  });
+   google.maps.event.addListener(marker3, 'click', function() {
+    infowindow3.open(map,marker3);
+  });
+   google.maps.event.addListener(marker4, 'click', function() {
+    infowindow4.open(map,marker4);
+  });
+  google.maps.event.addListener(marker5, 'click', function() {
+    infowindow5.open(map,marker5);
+  });
+  google.maps.event.addListener(marker6, 'click', function() {
+    infowindow6.open(map,marker6);
+  });
+  google.maps.event.addListener(marker7, 'click', function() {
+    infowindow7.open(map,marker7);
+  });
+  
+  google.maps.event.addListener(marker9, 'click', function() {
+    infowindow9.open(map,marker9);
+  });
+  google.maps.event.addListener(marker10, 'click', function() {
+    infowindow10.open(map,marker10);
+  });
+  google.maps.event.addListener(marker11, 'click', function() {
+    infowindow11.open(map,marker11);
+  });
+  google.maps.event.addListener(marker12, 'click', function() {
+    infowindow12.open(map,marker12);
+  });
+  google.maps.event.addListener(marker13, 'click', function() {
+    infowindow13.open(map,marker13);
+  });
+  google.maps.event.addListener(marker14, 'click', function() {
+    infowindow14.open(map,marker14);
+  });
+  google.maps.event.addListener(marker15, 'click', function() {
+    infowindow15.open(map,marker15);
+  });
+  google.maps.event.addListener(marker16, 'click', function() {
+    infowindow16.open(map,marker16);
+  });
+  google.maps.event.addListener(marker17, 'click', function() {
+    infowindow17.open(map,marker17);
+  });
+  google.maps.event.addListener(marker18, 'click', function() {
+    infowindow18.open(map,marker18);
+  });
+  google.maps.event.addListener(marker19, 'click', function() {
+    infowindow19.open(map,marker19);
+  });
+  google.maps.event.addListener(marker20, 'click', function() {
+    infowindow20.open(map,marker20);
+  });
+  google.maps.event.addListener(marker21, 'click', function() {
+    infowindow21.open(map,marker21);
+  });
+  google.maps.event.addListener(marker22, 'click', function() {
+    infowindow22.open(map,marker22);
+  });
+  google.maps.event.addListener(marker23, 'click', function() {
+    infowindow23.open(map,marker23);
+  });
+  google.maps.event.addListener(marker24, 'click', function() {
+    infowindow24.open(map,marker24);
+  });
+  google.maps.event.addListener(marker25, 'click', function() {
+    infowindow25.open(map,marker25);
+  });
+  
+
+  //add own pos
+  updatePos();
+   
+});
+
+document.addEventListener("deviceready", onDeviceReady, false);
+
+  var mymarker;
+  var newLatlng;
+  var i = 0;
+
+function updatePos(){
+
+var myUpdatedPos = navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 500000, enableHighAccuracy: true });
+}
+
+function onSuccess(position) {
+    if (i==0){
+        mymarker = new google.maps.Marker({
+                        position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+                        map: map,
+                        animation: google.maps.Animation.DROP
+                    });
+    } else {
+    	newLatlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    	mymarker.setPosition(newLatlng);
+	}
+	i++;
+	window.setTimeout(updatePos, 15000);
+}
+
+// onError Callback receives a PositionError object
+//
+    function onError(error) {
+        /*alert('code: '    + error.code    + '\n' +
+        'message: ' + error.message + '\n');
+    */}
+
+
+function getServiceMessage() {
+	$.ajax({
+           type: "GET",
+           url: "http://showbus.dk/shuttle/service.php"
+        }).done(function( msg ) {
+		   var service = msg.substring(1);
+		   document.getElementById("service").value = service;
+  }); 
+  window.setTimeout(updatePos, 200000);
+}
+
+function getPrice() {
+	$.ajax({
+           type: "GET",
+           url: "http://showbus.dk/shuttle/getbusprice.php"
+        }).done(function( msg ) {
+			document.getElementById("price").value = "Køb din billet når du stiger ombord.\n"+ 
+"Betal kontant eller send BUS til 1944 på SMS.\n"+
+"Det koster "+msg+" pr. billet, JUMP ON JUMP OFF hele aftenen.";
+  }); 
+  window.setTimeout(updatePos, 2000000);
+}
+
+/*function getInfoPrice() {
+	$.ajax({
+           type: "GET",
+           url: "http://showbus.dk/shuttle/getbusprice.php"
+        }).done(function( msg ) {
+			document.getElementById("infotext").value = "BarShuttle – en partybus der kører fra bar til bar. BarShuttle er altid "+ "fyldt med god musik og glade mennesker. BarShuttle standser ved de mest populære barer i København. Bussen kører dig og dine"+ " venner sikkert rundt i nattelivet fredag & lørdag fra Kl. 21-03. Torsdag kører vi PubCrawls, se mere på barshuttle.dk"+
+" Hop på BarShuttle når du vil og kør videre til næste fest. Spar taxaen og mød andre festglade mennesker på turen.\n"+
+"Billetter købes kontant ombord eller send BUS til 1944 - Billetpris kun "+msg+",-\n\n"+
+"Der sælges ikke alkohol ombord.\n"+
+"Følg BarShuttle på Facebook";
+  }); 
+  window.setTimeout(updatePos, 2000000);
+}*/
+
+/*function getFrontPrice() {
+	$.ajax({
+           type: "GET",
+           url: "http://showbus.dk/shuttle/getbusprice.php"
+        }).done(function( msg ) {
+			document.getElementById("front").value = "BarShuttle – en partybus der kører fra "+ "bar til bar. BarShuttle er altid fyldt med god musik og glade mennesker. BarShuttle standser "+ "ved de mest populære barer i København."+
+" JUMP ON – JUMP OFF Billetpris kun "+msg;
+  }); 
+  window.setTimeout(updatePos, 2000000);
+}*/
+
+$(document).on('pageshow', '#start',function(e,data){ 
+   getServiceMessage();
+});
+
+$(document).on('pageshow', '#ticket',function(e,data){ 
+   getPrice();
+});
+
+/*$(document).on('pageshow', '#info',function(e,data){ 
+   getInfoPrice();
+});*/
+
+/*$(document).on('pageshow', '#start',function(e,data){ 
+   getFrontPrice();
+});*/
+
+$(document).ready(function(){
+    $("#form").validate( {
+		rules: {
+
+        tel: {
+            number: true, // as space is not a number it will return an error
+            minlength: 8, // will count space 
+            maxlength: 8
+        }
+
+    }
+	
+	});
+  });
+  
+  function onDeviceReady() {
+		navigator.splashscreen.hide();		
+			
+    }
+
+
+function notify(){
+	$("#form").validate();
+	if ($("input[name=tel]").valid()) {
+		
+            var postData =  $("form").serialize();
+			
+            $.ajax({
+                type: 'POST',
+                data: postData,
+                //change the url for your project
+                url: 'http://showbus.dk/shuttle/notify.php',
+                success: function(data){
+                    console.log(data);
+					$("input[name='tel']").val('');
+					$("#select-stop").val('1');
+					$("#select-stop").selectmenu('refresh');
+                    alert('Du vil modtage en sms 5 min. før bussen er ved det valgte stoppested');
+                },
+                error: function(){
+                    console.log(data);
+                    alert('Der opstod en fejl, din påmindelse er ikke blevet registeret');
+                }
+            });
+	}
+            return false;
+}
+var markerbus;
+var b = 0;
+var myLatLngbus;
+var lat;
+var lon;
+function updatebuspos() {
+$.ajax({
+           type: "GET",
+           url: "http://showbus.dk/shuttle/getbuspos.php"
+        }).done(function( msg ) {
+			
+		   lat = msg.substring(0,msg.indexOf("#"));
+		   lon = msg.substring(msg.indexOf("#")+1);
+		   var imagebus = 'images/bus.png';
+		   if (lat != '0' && lon != '0') {
+			   myLatLngbus = new google.maps.LatLng(lat,lon);
+			   if (b == 0){
+				   b++;
+  				markerbus = new google.maps.Marker({
+      				position: myLatLngbus,
+      				map: map,
+      				icon: imagebus,
+	 				 title: 'BarShuttle'
+ 				});
+				map.setCenter(myLatLngbus);
+			   } else {
+				   markerbus.setPosition(myLatLngbus);
+				   markerbus.setMap(map);
+			   }
+			   
+		   } else {
+			   //markerbus.setMap(null);
+		   }
+		});
+		window.setTimeout(updatebuspos, 2000); 
+		}
+
+</script>
 </html>
